@@ -1,13 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,state,style,animate,transition } from '@angular/animations';
 import { Question } from './Question';
+import { CurrencyIndex } from '@angular/common/src/i18n/locale_data';
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    // animation triggers go here
+    trigger('EnterLeave', [
+      state('flyIn', style({ transform: 'translateX(0)' })),
+      transition(':enter', [
+        style({ transform: 'translateX(-100%)' }),
+        animate('10s 1s ease-in')
+      ]),
+      transition(':leave', [
+        animate('0.3s ease-out', style({ transform: 'translateX(100%)' }))
+      ])
+    ])
   ]
 })
 export class AppComponent implements OnInit {
@@ -31,6 +43,16 @@ export class AppComponent implements OnInit {
     }
     let question = this.questionArray[this.currentIdx];
     return question.questionText;
+  }
+
+  getQuestionIdxString() {
+    if (this.questionArray === 'undefined' || this.questionArray.length == 0)
+    {
+      return "";
+    }
+
+    let str = "Question " + (this.currentIdx + 1).toString() + ' Of ' + this.questionArray.length.toString();
+    return str;
   }
 
   getAns1() {

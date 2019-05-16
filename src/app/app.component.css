@@ -1,0 +1,26 @@
+.question-panel-card {
+    max-width: 600px;
+    background-color: burlywood;
+    border-radius: 54;
+    margin-left: 40pc
+    
+}
+
+.answer-panel-card {
+    max-width: 600px;
+    background-color: aquamarine;
+    border-radius: 54;
+    margin-left: 40pc
+}
+
+.card-text {
+    font-size: 40px
+}
+
+.button-style {
+    max-width: 500px;
+    max-height: 200px;
+    font-size: 40px;
+    margin-left: 40px
+}
+

@@ -8,23 +8,28 @@
 <h2>Load Quiz File</h2>
 <input type="file" class="upload" (change)="changeListener($event.target.files)">
 
-<div class="card">
-  <button> {{ getCurrentQuestionText() }}</button>
-</div>
 
-<div>
-  <button>{{ getAns1() }}</button>
-</div>
+<mat-card class="question-panel-card">
+  <mat-card-header>
+    <mat-card-subtitle>{{ getQuestionIdxString() }}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p class="card-text">
+      {{ getCurrentQuestionText() }}
+    </p>
+  </mat-card-content>
 
-<div>
-  <button>{{ getAns2() }}</button>
-</div>
+</mat-card>
 
-<div>
-  <button>{{ getAns3() }}</button>
-</div>
+<mat-card class="answer-panel-card">
 
+    <button class="button-style" [@EnterLeave]="'flyIn'">{{ getAns1() }}</button>
+    <button class="button-style" [@EnterLeave]="'flyIn'">{{ getAns2() }}</button>
+    <button class="button-style" [@EnterLeave]="'flyIn'">{{ getAns3() }}</button>
 
-<div>
-  <button (click)="goNext()">Next Question</button>
-</div>
+</mat-card>
+
+<mat-card >
+  <button  class="button-style" (click)="goNext()">Next Question</button>
+</mat-card>
