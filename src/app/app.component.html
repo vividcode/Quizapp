@@ -5,10 +5,14 @@
   </h1>
  
 </div>
-<h2>Load Quiz File</h2>
-<input type="file" class="upload" (change)="changeListener($event.target.files)">
+
+<div *ngIf="!isCSVLoaded()">
+  <h2>Load Quiz File</h2>
+  <input type="file" class="upload" (change)="changeListener($event.target.files)">
+</div>
 
 
+<mat-card class="main-panel" *ngIf="isCSVLoaded()">
 <mat-card class="question-panel-card">
   <mat-card-header>
     <mat-card-subtitle>{{ getQuestionIdxString() }}</mat-card-subtitle>
@@ -22,14 +26,20 @@
 
 </mat-card>
 
+<div><br><br><br></div>
 <mat-card class="answer-panel-card">
 
-    <button class="button-style" [@EnterLeave]="'flyIn'">{{ getAns1() }}</button>
-    <button class="button-style" [@EnterLeave]="'flyIn'">{{ getAns2() }}</button>
-    <button class="button-style" [@EnterLeave]="'flyIn'">{{ getAns3() }}</button>
+    <button id="ans1" [style.background-color]="getColor(1)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" [@EnterLeave]="'flyIn'">{{ getAns1() }}</button>
+    <button id="ans2" [style.background-color]="getColor(2)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" [@EnterLeave]="'flyIn'">{{ getAns2() }}</button>
+    <button id="ans3" [style.background-color]="getColor(3)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" [@EnterLeave]="'flyIn'">{{ getAns3() }}</button>
 
 </mat-card>
-
-<mat-card >
-  <button  class="button-style" (click)="goNext()">Next Question</button>
+<div><br><br><br></div>
+<mat-card class="button-panel">
+  <button class="solo-button-style"  (click)="goNext()">Next Question</button>
+  <button class="solo-button-style" [style.background-color]="ffffff00">{{ getText(true) }}</button>
+  <!--🙂 😞-->
+  <button class="solo-button-style" [style.background-color]="ff00ff00">{{ getText(false) }}</button>
+  <!--✅ ❌-->
+</mat-card>
 </mat-card>

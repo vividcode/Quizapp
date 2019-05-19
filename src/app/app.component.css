@@ -1,26 +1,79 @@
+.main-panel {
+    max-width: 75%;
+    max-height: 60%;
+    background-color: blueviolet;
+    border-radius: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
 .question-panel-card {
-    max-width: 600px;
+    width: 60%;
+    height: 25%;
+    position: relative;
     background-color: burlywood;
-    border-radius: 54;
-    margin-left: 40pc
-    
+    border-radius: 14px;   
 }
 
 .answer-panel-card {
-    max-width: 600px;
-    background-color: aquamarine;
-    border-radius: 54;
-    margin-left: 40pc
+    width: 70%;
+    height: 75%;
+    position: relative;
+    background-color: darksalmon;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-panel {
+    width: 70%;
+    position: relative;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 6px;
 }
 
 .card-text {
     font-size: 40px
 }
 
-.button-style {
-    max-width: 500px;
-    max-height: 200px;
-    font-size: 40px;
-    margin-left: 40px
+.button-red {
+    background-color: crimson;
 }
+
+.button-green {
+    background-color: green;
+}
+
+.answer-button-style {
+    max-width: 32%;
+    max-height: 80%;
+    font-size: 120px;
+    background-color: dimgray;
+    color: darkblue;
+    border-radius: 14px;
+    border-color: beige;
+    border-width: 4px;
+    display: inline-block;
+}
+
+.solo-button-style {
+    margin-left: 12.5%;
+    max-width: 40%;
+    max-height: 80%;
+    font-size: 70px;
+    border-radius: 6px;
+    background-color: black;
+    color: darkorange;
+    display: inline-block;
+}
+
+
 
