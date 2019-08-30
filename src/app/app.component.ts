@@ -11,19 +11,16 @@ import { getRenderedText } from '@angular/core/src/render3';
   animations: [
     trigger('EnterLeave', [
       state('flyIn', style({ transform: 'translateX(0)' })),
-      transition(':enter', [
-        style({ transform: 'translateX(-1000%)' }),
-        animate('1s 0s ease-in')
-      ]),
-      transition(':leave', [
-        animate('0.3s ease-out', style({ transform: 'translateX(100%)' }))
-      ])
+      state('flyOut', style({ transform: 'translateX(-1000%)' })),
+      transition('flyIn=>flyOut', animate('3s 0s linear')),
+      transition('flyOut=>flyIn', animate('3s 0s ease-out'))
     ])
   ]
 })
 
 export class AppComponent implements OnInit {
 
+  currentState: String = 'flyOut';
   question: Question;
   questionArray: any;
   currentIdx: number;
@@ -47,10 +44,6 @@ export class AppComponent implements OnInit {
     }
 
     return true;
-  }
-
-  getButtoTitle() {
-
   }
 
   getCurrentQuestionText() {
@@ -89,12 +82,6 @@ export class AppComponent implements OnInit {
     this.answerSelected = true;
     this.answerIsCorrect = isCorrectAnsSelected;
 
-    // let className = isCorrectAnsSelected ? 'button-red' : 'button-green';
-    // console.log(className);
-
-    // event.srcElement.myDynamicClass = className;
-    // event.target.class = event.srcElement.myDynamicClass;
-    // console.log(event.srcElement.myDynamicClass);
     return isCorrectAnsSelected;
   }
 
@@ -111,7 +98,7 @@ export class AppComponent implements OnInit {
       return 'red';
     }
 
-    return 'grey';
+    return 'radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(232,208,157,1) 100%);';
   }
 
   getText(isSmiley: Boolean) {
@@ -167,15 +154,18 @@ export class AppComponent implements OnInit {
     }
 
     this.answerSelected = false;
+    this.currentState = 'flyOut';
+    setTimeout(() => 
+    {
+      this.currentState = 'flyIn';
+    }, 1000);
   }
 
   public changeListener(files: FileList) {
 
     if(files && files.length > 0) {
        let file : File = files.item(0); 
-         console.log(file.name);
-         console.log(file.size);
-         console.log(file.type);
+
          let reader: FileReader = new FileReader();
          reader.readAsText(file);
          reader.onload = (e) => {
@@ -195,6 +185,11 @@ export class AppComponent implements OnInit {
 
                   this.questionArray.push(q);
             }
+
+            setTimeout(() => 
+            {
+              this.currentState = 'flyIn';
+            }, 1000);
          }
       }
   }

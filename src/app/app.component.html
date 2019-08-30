@@ -1,9 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
- 
+<div class="headDev">
+  <div class="title-text">
+    🖋️🖋️  Be the best 🖋️🖋️
+  </div>
+
+  <div class="super-text">
+  👌 "ગુજ્જુ" 👌
+  </div>
+
+  <div class="title-text">
+    👍 in the universe. 👍
+    </div>
 </div>
 
 <div *ngIf="!isCSVLoaded()">
@@ -11,15 +18,14 @@
   <input type="file" class="upload" (change)="changeListener($event.target.files)">
 </div>
 
-
-<mat-card class="main-panel" *ngIf="isCSVLoaded()">
+<mat-card class="main-panel" *ngIf="isCSVLoaded()" [@EnterLeave]=currentState>
 <mat-card class="question-panel-card">
   <mat-card-header>
     <mat-card-subtitle>{{ getQuestionIdxString() }}</mat-card-subtitle>
   </mat-card-header>
   
   <mat-card-content>
-    <p class="card-text">
+    <p class="q-card-text">
       {{ getCurrentQuestionText() }}
     </p>
   </mat-card-content>
@@ -28,10 +34,10 @@
 
 <div><br><br><br></div>
 <mat-card class="answer-panel-card">
-
-    <button id="ans1" [style.background-color]="getColor(1)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" [@EnterLeave]="'flyIn'">{{ getAns1() }}</button>
-    <button id="ans2" [style.background-color]="getColor(2)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" [@EnterLeave]="'flyIn'">{{ getAns2() }}</button>
-    <button id="ans3" [style.background-color]="getColor(3)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" [@EnterLeave]="'flyIn'">{{ getAns3() }}</button>
+  <!--(click)="evaluateAnswer($event)"--> 
+    <button id="ans1" [style.background-color]="getColor(1)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" >{{ getAns1() }}</button>
+    <button id="ans2" [style.background-color]="getColor(2)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" >{{ getAns2() }}</button>
+    <button id="ans3" [style.background-color]="getColor(3)" (click)="evaluateAnswer($event)" class="answer-button-style"  ng-class="myDynamicClass" >{{ getAns3() }}</button>
 
 </mat-card>
 <div><br><br><br></div>
